@@ -1,0 +1,58 @@
+.envIntro {
+  margin: 0 0 12px;
+  color: var(--color-text-muted);
+}
+
+.envTable {
+  display: grid;
+  gap: 10px;
+}
+
+.envRow {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.9fr) minmax(0, 1.4fr);
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(17, 24, 39, 0.08);
+  background: rgba(249, 250, 251, 0.65);
+}
+
+.envKey {
+  font-weight: 800;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  color: rgba(17, 24, 39, 0.82);
+  overflow-wrap: anywhere;
+}
+
+.envVal {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow-wrap: anywhere;
+}
+
+.envValue {
+  display: inline-block;
+  padding: 6px 8px;
+  border-radius: 10px;
+  border: 1px solid rgba(37, 99, 235, 0.20);
+  background: rgba(37, 99, 235, 0.08);
+  color: rgba(17, 24, 39, 0.92);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
+    monospace;
+  font-size: 12px;
+}
+
+.envEmpty {
+  color: rgba(239, 68, 68, 0.85);
+  font-weight: 700;
+  font-size: 12px;
+}
+
+@media (max-width: 560px) {
+  .envRow {
+    grid-template-columns: 1fr;
+  }
+}

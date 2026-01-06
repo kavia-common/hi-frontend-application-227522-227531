@@ -1,48 +1,49 @@
-import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
+import { Home } from "./pages/Home";
+import "./App.css";
 
 // PUBLIC_INTERFACE
 function App() {
-  const [theme, setTheme] = useState('light');
-
-  // Effect to apply theme to document element
-  useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme);
-  }, [theme]);
-
-  // PUBLIC_INTERFACE
-  const toggleTheme = () => {
-    setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');
-  };
-
   return (
-    <div className="App">
-      <header className="App-header">
-        <button 
-          className="theme-toggle" 
-          onClick={toggleTheme}
-          aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-        >
-          {theme === 'light' ? '🌙 Dark' : '☀️ Light'}
-        </button>
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <p>
-          Current theme: <strong>{theme}</strong>
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="appShell">
+        <header className="topNav">
+          <div className="container">
+            <div className="topNavInner">
+              <Link to="/" className="brand" aria-label="Hi Home">
+                <span className="brandMark" aria-hidden="true" />
+                <span>Hi</span>
+              </Link>
+
+              <nav className="navLinks" aria-label="Primary">
+                <a className="navLink" href="#features">
+                  Features
+                </a>
+                <a className="navLink" href="#environment">
+                  Environment
+                </a>
+              </nav>
+            </div>
+          </div>
+        </header>
+
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+
+        <footer className="footer">
+          <div className="container">
+            <div className="footerInner">
+              <div>
+                <strong>Hi</strong> — Ocean Professional React starter
+              </div>
+              <div className="smallNote">Built for quick preview and future expansion.</div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </BrowserRouter>
   );
 }
 
